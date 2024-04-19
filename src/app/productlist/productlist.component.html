@@ -1,0 +1,7 @@
+<!-- <h2>Products in {{ selectedCategory}}</h2> -->
+<div class="product-container">
+    <ng-container *ngFor="let product of (products$ | async);trackBy: trackByProductId">
+        <app-product [product]="product"></app-product>
+    </ng-container>
+</div>
+

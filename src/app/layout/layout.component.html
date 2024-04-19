@@ -1,0 +1,35 @@
+<div class="header-container">
+    <!-- Search bar, cart button, profile -->
+    <div class="search-container">
+      <a routerLink="/home">
+        <span class="ekart-icon">🛍️</span>
+      </a>
+      <div class="search-wrapper">
+        <div style="display: flex;width: 100%;">
+          <span class="search-icon">🔍</span>
+          <input type="text" [(ngModel)]="searchQuery" (input)="fetchSearchSuggestions()" placeholder="Search...">
+        </div>
+        <ul *ngIf="searchSuggestions.length > 0">
+          <li *ngFor="let suggestion of searchSuggestions" (click)="navigateToProductDetails(suggestion)">
+            {{ suggestion }}
+          </li>
+        </ul>
+      </div>
+    
+    </div>
+   
+    
+    <button class="cart-button" (click)="viewCart()">
+      <span class="cart-icon">🛒</span>
+      <span class="cart-count">({{ cartService.cartCount$ | async }})</span>
+    </button>
+    
+    <a routerLink="/viewprofile">
+      <button class="profile-button">Profile</button>
+    </a>
+</div>
+<div>
+    <!-- Content area -->
+    <router-outlet></router-outlet>
+</div>
+  

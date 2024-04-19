@@ -1,0 +1,10 @@
+<div class="select-container">
+    <ng-container *ngFor="let category of categories">
+      <button class="category-button"  (click)="categorySelected(category)">
+        {{ category }}
+      </button>
+    </ng-container>
+</div>  
+<div>
+    <app-productlist [selectedCategory]="selectedCategory"></app-productlist>
+</div>

@@ -1,0 +1,16 @@
+<div class="product-info">
+    <div>
+      <img [src]="product.image" class="product-img" alt="{{ product.title }}">
+    </div>
+    <div class="product-content">
+      <h2>{{ product.title }}</h2>
+      <p class="category">Category: {{ product.category }}</p>
+      <p class="description">Description: {{ product.description }}</p>
+      <p class="price">Price: ${{ product.price }}</p>
+      <p>Rating: ({{ product.rating.rate }}) (Based on {{ product.rating.count }} reviews)</p>
+      <button *ngIf="!isInCart(product)" (click)="addToCart(product)">Add to Cart</button>
+      <button *ngIf="isInCart(product)" (click)="viewCart()">View Cart</button>
+    </div>
+    
+  </div>
+  
