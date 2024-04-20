@@ -1,4 +1,5 @@
-<div class="header-container">
+<div class="layout-container">
+  <div class="header-container">
     <!-- Search bar, cart button, profile -->
     <div class="search-container">
       <a routerLink="/home">
@@ -18,18 +19,23 @@
     
     </div>
    
+    <div class="notsearch-container">
+      <button class="cart-button" (click)="viewCart()">
+        <span class="cart-icon">🛒</span>
+        <span class="cart-count">({{ cartService.cartCount$ | async }})</span>
+      </button>
+      
+      <a routerLink="/viewprofile">
+        <button class="profile-button">Profile</button>
+      </a>
+    </div>
     
-    <button class="cart-button" (click)="viewCart()">
-      <span class="cart-icon">🛒</span>
-      <span class="cart-count">({{ cartService.cartCount$ | async }})</span>
-    </button>
-    
-    <a routerLink="/viewprofile">
-      <button class="profile-button">Profile</button>
-    </a>
 </div>
-<div>
-    <!-- Content area -->
-    <router-outlet></router-outlet>
+<div class="route-container">
+  <!-- Content area -->
+  <router-outlet></router-outlet>
 </div>
+</div>
+
+
   

@@ -1,3 +1,14 @@
+.layout-container{
+  display: flex;
+  flex-direction: column;
+  .route-container{
+    flex:1
+  }
+  
+}
+
+
+
 .header-container {
   display: flex;
   justify-content: space-between;
@@ -5,6 +16,13 @@
   padding: 12px;
   background-color: #f8f9fa;
   border-bottom: 1px solid #dee2e6;
+  gap: 5px;
+  .notsearch-container{
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
 }
 
 .search-wrapper {
@@ -14,7 +32,7 @@
   width: 70%;
 }
 
-ul[_ngcontent-ng-c799406435] {
+ul {
   position: absolute;
   top: calc(100% + 5px);
   left: 73px;
@@ -36,7 +54,7 @@ ul[_ngcontent-ng-c799406435] {
 .search-container {
   display: flex;
   align-items: center;
-
+  flex: 2;
   width: 100%;
   position: relative;
 }
@@ -103,4 +121,19 @@ li {
   .profile-button:hover {
     background-color: #495057;
   }
-  
+  @media only screen and (max-width: 768px) {
+    .header-container{
+     flex-direction: column;
+     .search-container{
+       
+       .search-wrapper{
+         flex: 2;
+       }
+     }
+     .notsearch-container{
+       width: 100%;
+       justify-content: space-between;
+     }
+    
+    }
+  }
