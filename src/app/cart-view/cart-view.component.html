@@ -1,26 +1,40 @@
 <div class="cart-container">
-  <div class="cart-items">
-    <ul>
-      <li *ngFor="let item of cartItems">
-        <div class="cart-item">
-          <div class="item-image">
-            <img [src]="item.product.image" alt="{{ item.product.title }}">
-          </div>
-          <div class="item-details">
-            <p>{{ item.product.title }}</p>
-            <p>Quantity: {{ item.quantity }}</p>
-            <div class="quantity-controls">
-              <button (click)="increaseQuantity(item)">➕</button>
-              <button (click)="decreaseQuantity(item)">➖</button>
+  <ng-container *ngIf="cartItems.length !== 0 else emptyCart">
+    <div class="cart-items" >
+      <ul>
+        <li *ngFor="let item of cartItems">
+          <div class="cart-item">
+            <div class="item-image">
+              <img [src]="item.product.image" alt="{{ item.product.title }}">
+            </div>
+            <div class="item-details">
+              <p>{{ item.product.title }}</p>
+              <p>Quantity: {{ item.quantity }}</p>
+              <div class="quantity-controls">
+                <button (click)="increaseQuantity(item)">➕</button>
+                <button (click)="decreaseQuantity(item)">➖</button>
+              </div>
             </div>
           </div>
-        </div>
-      </li>
-    </ul>
-  </div>
-  <div class="cart-summary">
-    <h4 class="cart-summary-header">Cart Summary</h4>
-    <p>Total Items: {{ cartService.totalItems$ | async }}</p>
-    <p>Total Price: ${{ cartService.totalPrice$ | async }}</p>
-  </div>
+        </li>
+      </ul>
+    </div>
+    <div class="cart-summary">
+      <div class="cart-summary-header">
+        <h4>Cart Summary</h4>
+      </div>
+      <div class="cart-summary-content">
+        <p>Total Items: {{ cartService.totalItems$ | async }}</p>
+        <p>Total Price: ${{ cartService.totalPrice$ | async }}</p>
+      </div>
+    </div>
+  </ng-container>
+
 </div>
+
+<ng-template #emptyCart>
+  <div class="no-items-text">
+    <p>No items found in cart</p>
+  </div>
+ 
+</ng-template>

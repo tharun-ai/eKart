@@ -1,10 +1,21 @@
-<div class="select-container">
-    <ng-container *ngFor="let category of categories">
-      <button class="category-button"  (click)="categorySelected(category)">
-        {{ category }}
-      </button>
-    </ng-container>
-</div>  
-<div>
-    <app-productlist [selectedCategory]="selectedCategory"></app-productlist>
+<!-- Show loader while categories are loading -->
+
+
+<!-- Show categories when available -->
+<div class="home-container">
+  <div *ngIf="!categories">
+    <div class="loader"></div>
+  </div>
+  <ng-container *ngIf="categories">
+    <div class="select-container">
+      <ng-container *ngFor="let category of categories">
+        <button class="category-button" (click)="categorySelected(category)">
+          {{ category }}
+        </button>
+      </ng-container>
+    </div>
+    <div>
+     <app-productlist [selectedCategory]="selectedCategory"></app-productlist>
+    </div>
+  </ng-container>
 </div>
